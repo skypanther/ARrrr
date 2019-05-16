@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		9A1DFBFF228DA448007CCDB5 /* icomoon.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9A1DFBFE228DA448007CCDB5 /* icomoon.ttf */; };
 		9A1DFC02228DA4FB007CCDB5 /* scenekit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1DFC01228DA4FB007CCDB5 /* scenekit.swift */; };
+		9A1DFC06228DBBCB007CCDB5 /* PointCloudOutputVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1DFC05228DBBCB007CCDB5 /* PointCloudOutputVC.swift */; };
 		9A238F43228D9CB700857AD0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A238F42228D9CB700857AD0 /* AppDelegate.swift */; };
 		9A238F45228D9CB700857AD0 /* TabMeasuringVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A238F44228D9CB700857AD0 /* TabMeasuringVC.swift */; };
 		9A238F47228D9CB700857AD0 /* TabDepthMapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A238F46228D9CB700857AD0 /* TabDepthMapVC.swift */; };
@@ -21,6 +22,7 @@
 /* Begin PBXFileReference section */
 		9A1DFBFE228DA448007CCDB5 /* icomoon.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = icomoon.ttf; sourceTree = "<group>"; };
 		9A1DFC01228DA4FB007CCDB5 /* scenekit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = scenekit.swift; sourceTree = "<group>"; };
+		9A1DFC05228DBBCB007CCDB5 /* PointCloudOutputVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointCloudOutputVC.swift; sourceTree = "<group>"; };
 		9A238F3F228D9CB700857AD0 /* ARrrr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARrrr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A238F42228D9CB700857AD0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9A238F44228D9CB700857AD0 /* TabMeasuringVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabMeasuringVC.swift; sourceTree = "<group>"; };
@@ -85,6 +87,7 @@
 			children = (
 				9A238F44228D9CB700857AD0 /* TabMeasuringVC.swift */,
 				9A238F46228D9CB700857AD0 /* TabDepthMapVC.swift */,
+				9A1DFC05228DBBCB007CCDB5 /* PointCloudOutputVC.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -176,6 +179,7 @@
 				9A238F47228D9CB700857AD0 /* TabDepthMapVC.swift in Sources */,
 				9A238F43228D9CB700857AD0 /* AppDelegate.swift in Sources */,
 				9A238F45228D9CB700857AD0 /* TabMeasuringVC.swift in Sources */,
+				9A1DFC06228DBBCB007CCDB5 /* PointCloudOutputVC.swift in Sources */,
 				9A1DFC02228DA4FB007CCDB5 /* scenekit.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
