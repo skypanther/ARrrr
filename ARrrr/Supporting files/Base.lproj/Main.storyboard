@@ -27,11 +27,11 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MeasureIt" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1GY-cl-e2X">
                                         <rect key="frame" x="151.5" y="48.5" width="111.5" height="31.5"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="1GY-cl-e2X" firstAttribute="centerX" secondItem="OSU-aU-SWD" secondAttribute="centerX" id="4aG-hB-d4P"/>
                                     <constraint firstAttribute="bottom" secondItem="1GY-cl-e2X" secondAttribute="bottom" constant="20" id="YBu-tV-sJb"/>
@@ -52,7 +52,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="PQr-Ze-W5v" firstAttribute="bottom" secondItem="Edu-PE-GPE" secondAttribute="bottom" constant="60" id="03D-pV-hNd"/>
                             <constraint firstItem="vvx-Fb-mhU" firstAttribute="top" secondItem="tsR-hK-woN" secondAttribute="top" constant="44" id="A9s-CD-lKk"/>
@@ -88,7 +88,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Xjv-5d-f1Z">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Xjv-5d-f1Z">
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                             </imageView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="u8D-NH-hxf">
@@ -104,7 +104,7 @@
                             </segmentedControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nsK-3e-IpJ">
                                 <rect key="frame" x="184" y="763" width="46" height="30"/>
-                                <color key="tintColor" red="0.94117647059999998" green="0.39607843139999999" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
                                     <action selector="takePhoto:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="bm2-qQ-amJ"/>
@@ -112,6 +112,7 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="u8D-NH-hxf" firstAttribute="top" secondItem="O1u-W8-tvY" secondAttribute="top" constant="20" id="D9L-zO-R1D"/>
                             <constraint firstItem="Xjv-5d-f1Z" firstAttribute="bottom" secondItem="O1u-W8-tvY" secondAttribute="bottom" id="TMY-XJ-it4"/>
@@ -124,8 +125,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="O1u-W8-tvY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="PointCloud" id="6SE-da-eg2"/>
+                    <navigationItem key="navigationItem" title="PointCloud" id="6SE-da-eg2">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="JQ1-wL-JEK">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="cameraButton" destination="nsK-3e-IpJ" id="ejs-uk-o6h"/>
                         <outlet property="cameraButtonOutlet" destination="nsK-3e-IpJ" id="Cmh-Wp-Nzw"/>
                         <outlet property="imgView" destination="Xjv-5d-f1Z" id="Fm9-Yg-K2b"/>
                     </connections>
@@ -134,34 +140,24 @@
             </objects>
             <point key="canvasLocation" x="1659.4202898550725" y="359.59821428571428"/>
         </scene>
-        <!--Point Cloud OutputVC-->
+        <!--ARrrr...3D!-->
         <scene sceneID="1ax-aw-GSr">
             <objects>
-                <viewController storyboardIdentifier="PointCloudOutputVC" id="Hgc-sw-BnH" customClass="PointCloudOutputVC" customModule="ARrrr" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PointCloudOutputVC" title="ARrrr...3D!" id="Hgc-sw-BnH" customClass="PointCloudOutputVC" customModule="ARrrr" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VN1-EM-aj6">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sgp-wS-HNt">
-                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                                <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <textAttributes key="titleTextAttributes">
-                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </textAttributes>
-                                <items>
-                                    <navigationItem title="ARrrr...3D!" id="i4O-bd-BJ1"/>
-                                </items>
-                            </navigationBar>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0mQ-Bp-0Zp">
-                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0mQ-Bp-0Zp">
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </imageView>
                             <sceneKitView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="brE-c1-EkV">
-                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </sceneKitView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="iS1-i1-AFv">
-                                <rect key="frame" x="60" y="108" width="294" height="29"/>
+                                <rect key="frame" x="60" y="84" width="294" height="29"/>
                                 <segments>
                                     <segment title="Normal"/>
                                     <segment title="Depth"/>
@@ -173,20 +169,18 @@
                             </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="0mQ-Bp-0Zp" firstAttribute="trailing" secondItem="cDf-lB-0mb" secondAttribute="trailing" id="15N-HW-hvn"/>
                             <constraint firstAttribute="bottom" secondItem="0mQ-Bp-0Zp" secondAttribute="bottom" id="82k-si-0na"/>
-                            <constraint firstItem="Sgp-wS-HNt" firstAttribute="top" secondItem="cDf-lB-0mb" secondAttribute="top" id="9pP-Pt-Nrl"/>
                             <constraint firstItem="brE-c1-EkV" firstAttribute="leading" secondItem="VN1-EM-aj6" secondAttribute="leading" id="BAt-dN-nj7"/>
+                            <constraint firstItem="brE-c1-EkV" firstAttribute="top" secondItem="cDf-lB-0mb" secondAttribute="top" id="DYm-DI-3cd"/>
                             <constraint firstItem="brE-c1-EkV" firstAttribute="trailing" secondItem="cDf-lB-0mb" secondAttribute="trailing" id="M4K-iJ-PzY"/>
-                            <constraint firstItem="Sgp-wS-HNt" firstAttribute="leading" secondItem="brE-c1-EkV" secondAttribute="leading" id="QOL-aF-jTH"/>
-                            <constraint firstItem="0mQ-Bp-0Zp" firstAttribute="top" secondItem="Sgp-wS-HNt" secondAttribute="bottom" id="SpO-xG-Vhu"/>
-                            <constraint firstItem="iS1-i1-AFv" firstAttribute="top" secondItem="Sgp-wS-HNt" secondAttribute="bottom" constant="20" id="Wlf-bL-GaE"/>
+                            <constraint firstItem="iS1-i1-AFv" firstAttribute="top" secondItem="cDf-lB-0mb" secondAttribute="top" constant="40" id="cxh-4Y-I1F"/>
                             <constraint firstAttribute="bottom" secondItem="brE-c1-EkV" secondAttribute="bottom" id="kg1-pI-A8Z"/>
-                            <constraint firstItem="brE-c1-EkV" firstAttribute="top" secondItem="Sgp-wS-HNt" secondAttribute="bottom" id="n3v-VE-WBS"/>
                             <constraint firstItem="iS1-i1-AFv" firstAttribute="leading" secondItem="cDf-lB-0mb" secondAttribute="leading" constant="60" id="neg-9d-ZrU"/>
                             <constraint firstItem="cDf-lB-0mb" firstAttribute="trailing" secondItem="iS1-i1-AFv" secondAttribute="trailing" constant="60" id="ujV-bZ-99W"/>
-                            <constraint firstItem="Sgp-wS-HNt" firstAttribute="trailing" secondItem="brE-c1-EkV" secondAttribute="trailing" id="wV5-Ww-6eG"/>
+                            <constraint firstItem="0mQ-Bp-0Zp" firstAttribute="top" secondItem="cDf-lB-0mb" secondAttribute="top" id="wQy-Lu-cKE"/>
                             <constraint firstItem="0mQ-Bp-0Zp" firstAttribute="leading" secondItem="cDf-lB-0mb" secondAttribute="leading" id="zqb-W6-ld9"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="cDf-lB-0mb"/>
@@ -214,6 +208,7 @@
                     <connections>
                         <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
                         <segue destination="mga-pD-3sP" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
+                        <segue destination="K9p-9l-tlv" kind="relationship" relationship="viewControllers" id="slW-gu-bHM"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
@@ -243,6 +238,112 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bgw-7a-nL6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="749.27536231884062" y="359.59821428571428"/>
+        </scene>
+        <!--DepthCam-->
+        <scene sceneID="e38-d3-wEV">
+            <objects>
+                <viewController storyboardIdentifier="DepthCamVC" title="DepthCam" id="jnG-dn-5T3" customClass="DepthCamVC" customModule="ARrrr" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="AXJ-XK-Zfd">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bmW-z3-48O">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KtA-Pl-pgH">
+                                <rect key="frame" x="184" y="763" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="takePhoto:" destination="jnG-dn-5T3" eventType="touchUpInside" id="FNG-uw-6nk"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="bmW-z3-48O" firstAttribute="leading" secondItem="Hzm-6n-2U3" secondAttribute="leading" id="9Eb-99-93m"/>
+                            <constraint firstItem="bmW-z3-48O" firstAttribute="top" secondItem="Hzm-6n-2U3" secondAttribute="top" id="E41-9d-SjN"/>
+                            <constraint firstItem="bmW-z3-48O" firstAttribute="trailing" secondItem="Hzm-6n-2U3" secondAttribute="trailing" id="J12-yS-6kg"/>
+                            <constraint firstItem="KtA-Pl-pgH" firstAttribute="centerX" secondItem="Hzm-6n-2U3" secondAttribute="centerX" id="Ltw-s0-4pg"/>
+                            <constraint firstItem="bmW-z3-48O" firstAttribute="bottom" secondItem="Hzm-6n-2U3" secondAttribute="bottom" id="nqk-uI-GLY"/>
+                            <constraint firstItem="Hzm-6n-2U3" firstAttribute="bottom" secondItem="KtA-Pl-pgH" secondAttribute="bottom" constant="20" id="wSq-WR-Hlh"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Hzm-6n-2U3"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="DepthCam" id="hzw-M3-a1b">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="07G-R2-Bb5"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="camView" destination="bmW-z3-48O" id="R0t-Pq-NtO"/>
+                        <outlet property="cameraButton" destination="KtA-Pl-pgH" id="AA5-0q-9Cs"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="acE-V9-KgE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1671.0144927536232" y="1065.4017857142858"/>
+        </scene>
+        <!--Its Sooo Deep-->
+        <scene sceneID="vQb-n6-x0U">
+            <objects>
+                <viewController storyboardIdentifier="DepthCamOutputVC" title="Its Sooo Deep" id="vBQ-4d-w9b" customClass="DepthCamOutputVC" customModule="ARrrr" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="maD-Aq-1pP">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ml6-UW-9Kl">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                            </imageView>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.01" maxValue="0.98999999999999999" translatesAutoresizingMaskIntoConstraints="NO" id="QdW-DY-MHB">
+                                <rect key="frame" x="18" y="804" width="378" height="31"/>
+                                <connections>
+                                    <action selector="sliderChanged:" destination="vBQ-4d-w9b" eventType="valueChanged" id="rDU-Qx-AHB"/>
+                                </connections>
+                            </slider>
+                        </subviews>
+                        <color key="backgroundColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ml6-UW-9Kl" firstAttribute="leading" secondItem="q6j-iT-G01" secondAttribute="leading" id="MSs-pg-WOQ"/>
+                            <constraint firstItem="q6j-iT-G01" firstAttribute="trailing" secondItem="ml6-UW-9Kl" secondAttribute="trailing" id="OTG-4D-m6u"/>
+                            <constraint firstItem="QdW-DY-MHB" firstAttribute="leading" secondItem="q6j-iT-G01" secondAttribute="leading" constant="20" id="U3T-Kq-8FM"/>
+                            <constraint firstItem="q6j-iT-G01" firstAttribute="bottom" secondItem="ml6-UW-9Kl" secondAttribute="bottom" id="VK5-om-QzW"/>
+                            <constraint firstItem="q6j-iT-G01" firstAttribute="trailing" secondItem="QdW-DY-MHB" secondAttribute="trailing" constant="20" id="cLt-7z-ZcL"/>
+                            <constraint firstItem="q6j-iT-G01" firstAttribute="bottom" secondItem="QdW-DY-MHB" secondAttribute="bottom" constant="28" id="fu9-Ph-QF8"/>
+                            <constraint firstItem="QdW-DY-MHB" firstAttribute="centerX" secondItem="q6j-iT-G01" secondAttribute="centerX" id="hHi-Ps-XoS"/>
+                            <constraint firstItem="ml6-UW-9Kl" firstAttribute="top" secondItem="q6j-iT-G01" secondAttribute="top" id="jjg-Ea-CSe"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="q6j-iT-G01"/>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="ml6-UW-9Kl" id="Dbd-SY-eTm"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xNg-78-V6s" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2452" y="1065"/>
+        </scene>
+        <!--DepthCam-->
+        <scene sceneID="Zrj-PW-SjY">
+            <objects>
+                <navigationController title="DepthCam" automaticallyAdjustsScrollViewInsets="NO" id="K9p-9l-tlv" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="DepthCam" image="first" id="vmm-IA-0Ir"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="jdR-Ai-GJe">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="jnG-dn-5T3" kind="relationship" relationship="rootViewController" id="uxW-Lx-ZiO"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OAB-yX-4RB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="760.86956521739137" y="1065.4017857142858"/>
         </scene>
     </scenes>
     <resources>

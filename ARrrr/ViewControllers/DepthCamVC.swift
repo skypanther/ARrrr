@@ -1,5 +1,5 @@
 //
-//  SecondViewController.swift
+//  DepthCamVC.swift
 //  ARrrr
 //
 //  Created by Timothy Poulsen on 5/16/19.
@@ -9,17 +9,12 @@
 import AVFoundation
 import UIKit
 
-enum SelectedCamera {
-    case back, front
-}
+class DepthCamVC: UIViewController {
 
-class TabDepthMapVC: UIViewController {
-    
     let font = UIFont(name: "icomoon", size: 80)
     let btnTitleAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white,
                               NSAttributedString.Key.font: UIFont(name: "icomoon", size: 21)!]
     let SHUTTER = "\u{e901}"
-    var cameraSelected: SelectedCamera = .back
     var camera: AVCaptureDevice?
     let session = AVCaptureSession()
     let videoOutput = AVCaptureVideoDataOutput()
@@ -30,20 +25,10 @@ class TabDepthMapVC: UIViewController {
                                         qos: .userInitiated,
                                         attributes: [],
                                         autoreleaseFrequency: .workItem)
-    
-    @IBOutlet weak var imgView: UIImageView!
-    @IBOutlet weak var cameraButtonOutlet: UIButton!
+
+    @IBOutlet weak var camView: UIImageView!
     @IBOutlet weak var cameraButton: UIButton!
     
-    @IBAction func cameraSelector(_ sender: UISegmentedControl) {
-        reset()
-        if sender.selectedSegmentIndex == 0 {
-            cameraSelected = .back
-        } else {
-            cameraSelected = .front
-        }
-        configureCaptureSession()
-    }
     
     @IBAction func takePhoto(_ sender: UIButton) {
         self.session.beginConfiguration()
@@ -57,40 +42,17 @@ class TabDepthMapVC: UIViewController {
         self.session.commitConfiguration()
         photoOutput.isDepthDataDeliveryEnabled = true
         self.photoOutput.capturePhoto(with: photoSettings, delegate: self)
+
     }
-    
-    fileprivate func reset() {
-        guard let camera = self.camera else {
-            return
-        }
-        if self.session.isRunning {
-            self.session.stopRunning()
-        }
-        do {
-            try camera.lockForConfiguration()
-            self.session.beginConfiguration()
-            guard let currentCameraInput: AVCaptureInput = self.session.inputs.first else {
-                fatalError("cannot get old camera")
-            }
-            self.session.removeInput(currentCameraInput)
-            self.session.removeOutput(self.videoOutput)
-            self.videoOutputAdded = false
-            self.session.commitConfiguration()
-        } catch {
-            print("unable to lock camera for configuration")
-        }
-        camera.unlockForConfiguration()
-        self.camera = nil
-    }
-    
+
     fileprivate func whenDoneCapturingPhoto(with photo: AVCapturePhoto) {
         // segue to a viewcontroller showing the output / depth / 3D representation
         self.session.beginConfiguration()
         self.session.removeOutput(photoOutput)
         self.session.addOutput(self.videoOutput)
         self.session.commitConfiguration()
-        let vc: PointCloudOutputVC? = self.storyboard?.instantiateViewController(withIdentifier: "PointCloudOutputVC") as? PointCloudOutputVC
-        if let validVC: PointCloudOutputVC = vc {
+        let vc: DepthCamOutputVC? = self.storyboard?.instantiateViewController(withIdentifier: "DepthCamOutputVC") as? DepthCamOutputVC
+        if let validVC: DepthCamOutputVC = vc {
             validVC.outputImage = photo
             navigationController?.pushViewController(validVC, animated: true)
         }
@@ -107,7 +69,7 @@ class TabDepthMapVC: UIViewController {
 
 // MARK: - Camera configuration
 
-extension TabDepthMapVC {
+extension DepthCamVC {
     fileprivate func checkPermissions() {
         switch AVCaptureDevice.authorizationStatus(for: .video) {
         case .authorized:
@@ -129,12 +91,7 @@ extension TabDepthMapVC {
     }
     
     fileprivate func configureCaptureSession() {
-        switch cameraSelected {
-        case .back:
-            self.camera = AVCaptureDevice.default(.builtInDualCamera, for: .video, position: .back)
-        case .front:
-            self.camera = AVCaptureDevice.default(.builtInTrueDepthCamera, for: .video, position: .front)
-        }
+        self.camera = AVCaptureDevice.default(.builtInDualCamera, for: .video, position: .back)
         guard let camera = self.camera else {
             fatalError("Unable to access the camera")
         }
@@ -160,12 +117,11 @@ extension TabDepthMapVC {
         camera.unlockForConfiguration()
         self.session.startRunning()
     }
-    
 }
 
-// MARK: - Capture Video Data Delegate Methods
+// MARK: - Capture Photo Delegate methods
 
-extension TabDepthMapVC: AVCaptureVideoDataOutputSampleBufferDelegate {
+extension DepthCamVC: AVCaptureVideoDataOutputSampleBufferDelegate {
     
     func captureOutput(_ output: AVCaptureOutput,
                        didOutput sampleBuffer: CMSampleBuffer,
@@ -177,21 +133,22 @@ extension TabDepthMapVC: AVCaptureVideoDataOutputSampleBufferDelegate {
         var displayImage = UIImage(ciImage: image)
         displayImage = displayImage.rotate(radians: .pi/2)
         DispatchQueue.main.async { [weak self] in
-            self?.imgView.image = displayImage
+            self?.camView.image = displayImage
         }
     }
 }
 
-extension TabDepthMapVC: AVCapturePhotoCaptureDelegate {
+extension DepthCamVC: AVCapturePhotoCaptureDelegate {
     func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
         whenDoneCapturingPhoto(with: photo)
     }
 }
 
 
+
 // MARK: - VC overrides
 
-extension TabDepthMapVC {
+extension DepthCamVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         checkPermissions()
@@ -202,4 +159,5 @@ extension TabDepthMapVC {
         super.viewWillAppear(animated)
         setButtonSymbol(SHUTTER)
     }
+
 }
