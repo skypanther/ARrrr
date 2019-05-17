@@ -74,13 +74,18 @@ class PointCloudOutputVC: UIViewController {
     private func drawPointCloud() {
         guard let colorImage = normalImage, let cgColorImage = colorImage.cgImage else { fatalError() }
 
-        guard let depthData = depthData?.convertToDepth() else { fatalError() }
-
+        // use extension essentially implementing  https://stackoverflow.com/a/46848526/292947 to
+        // convert disparity to depth data
+//        guard let depthData = depthData?.convertToDepth() else { fatalError() }
+        // or without
+        guard let depthData = depthData else { fatalError() }
+        
         let depthPixelBuffer = depthData.depthDataMap
         let width  = CVPixelBufferGetWidth(depthPixelBuffer)
         let height = CVPixelBufferGetHeight(depthPixelBuffer)
         
         let resizeScale = CGFloat(width) / colorImage.size.width
+        print("resizeScale: \(resizeScale)")
         let resizedColorImage = CIImage(cgImage: cgColorImage).transformed(by: CGAffineTransform(scaleX: resizeScale, y: resizeScale))
         guard let pixelDataColor = resizedColorImage.createCGImage().pixelData() else { fatalError() }
         
@@ -93,7 +98,7 @@ class PointCloudOutputVC: UIViewController {
         let zNear = zCamera - 0.2
         let zScale = zMax > zNear ? zNear / zMax : 1.0
         print("z scale: \(zScale)")
-        let xyScale: Float = 0.0002
+        let xyScale: Float = 0.00025  // adjusts the size of the rendered scene
         
         let pointCloud: [SCNVector3] = pixelDataDepth.enumerated().map {
             let index = $0.offset
@@ -128,7 +133,7 @@ extension PointCloudOutputVC {
         super.viewWillAppear(animated)
         if let oi = outputImage, let cgiVersion = oi.cgImageRepresentation() {
             let img = UIImage(cgImage: cgiVersion.takeUnretainedValue())
-            self.normalImage = img.rotate(radians: .pi/2)
+            self.normalImage = img  //.rotate(radians: .pi/2)
             self.depthData =  oi.depthData
             showImage()
         }

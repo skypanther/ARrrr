@@ -1,14 +1,12 @@
 //
 //  PointCloud.swift
-//  iOS-Depth-Sampler
+//  ARrrr
 //
-//  Created by Shuichi Tsutsumi on 2018/09/14.
-//  Copyright © 2018 Shuichi Tsutsumi. All rights reserved.
+//  Created by Timothy Poulsen on 5/16/19.
+//  Copyright © 2019 Tim Poulsen. All rights reserved.
 //
-//  Reference: https://github.com/eugeneu/PoindCloudRenderer
-
-
-// Possibly modify with this https://stackoverflow.com/a/46848526/292947
+//  Original: https://github.com/eugeneu/PoindCloudRenderer
+//  With additions, corrections, including https://stackoverflow.com/a/46848526/292947
 
 import SceneKit
 
