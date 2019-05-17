@@ -23,6 +23,7 @@ class TabDepthMapVC: UIViewController {
     var camera: AVCaptureDevice?
     let session = AVCaptureSession()
     let videoOutput = AVCaptureVideoDataOutput()
+    var prevLayer: AVCaptureVideoPreviewLayer?
     var videoOutputAdded = false
     let photoOutput = AVCapturePhotoOutput()
     let sessionQueue = DispatchQueue(label: "session queue")
@@ -31,9 +32,9 @@ class TabDepthMapVC: UIViewController {
                                         attributes: [],
                                         autoreleaseFrequency: .workItem)
     
-    @IBOutlet weak var imgView: UIImageView!
     @IBOutlet weak var cameraButtonOutlet: UIButton!
     @IBOutlet weak var cameraButton: UIButton!
+    @IBOutlet weak var previewView: UIView!
     
     @IBAction func cameraSelector(_ sender: UISegmentedControl) {
         reset()
@@ -139,9 +140,13 @@ extension TabDepthMapVC {
             fatalError("Unable to access the camera")
         }
         if self.videoOutputAdded == false {
-            self.videoOutput.setSampleBufferDelegate(self, queue: self.dataOutputQueue)
-            self.videoOutput.videoSettings = [kCVPixelBufferPixelFormatTypeKey as String: kCVPixelFormatType_32BGRA]
-            
+            prevLayer = AVCaptureVideoPreviewLayer(session: session)
+            prevLayer?.frame.size = previewView.frame.size
+            prevLayer?.videoGravity = AVLayerVideoGravity.resizeAspectFill
+            prevLayer?.connection?.videoOrientation = transformOrientation(orientation: UIInterfaceOrientation(rawValue: UIApplication.shared.statusBarOrientation.rawValue)!)
+            if let previewLayer = prevLayer {
+                previewView.layer.addSublayer(previewLayer)
+            }
         }
         sessionQueue.async {
             do {
@@ -161,26 +166,39 @@ extension TabDepthMapVC {
         self.session.startRunning()
     }
     
+    func transformOrientation(orientation: UIInterfaceOrientation) -> AVCaptureVideoOrientation {
+        switch orientation {
+        case .landscapeLeft:
+            return .landscapeLeft
+        case .landscapeRight:
+            return .landscapeRight
+        case .portraitUpsideDown:
+            return .portraitUpsideDown
+        default:
+            return .portrait
+        }
+    }
+    
 }
 
 // MARK: - Capture Video Data Delegate Methods
 
-extension TabDepthMapVC: AVCaptureVideoDataOutputSampleBufferDelegate {
-    
-    func captureOutput(_ output: AVCaptureOutput,
-                       didOutput sampleBuffer: CMSampleBuffer,
-                       from connection: AVCaptureConnection) {
-        
-        let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer)
-        let image = CIImage(cvPixelBuffer: pixelBuffer!)
-        
-//        var displayImage = UIImage(ciImage: image)
-//        displayImage = displayImage.rotate(radians: .pi/2)
-        DispatchQueue.main.async { [weak self] in
-            self?.imgView.image = UIImage(ciImage: image)
-        }
-    }
-}
+//extension TabDepthMapVC: AVCaptureVideoDataOutputSampleBufferDelegate {
+//
+//    func captureOutput(_ output: AVCaptureOutput,
+//                       didOutput sampleBuffer: CMSampleBuffer,
+//                       from connection: AVCaptureConnection) {
+//
+//        let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer)
+//        let image = CIImage(cvPixelBuffer: pixelBuffer!)
+//
+////        var displayImage = UIImage(ciImage: image)
+////        displayImage = displayImage.rotate(radians: .pi/2)
+//        DispatchQueue.main.async { [weak self] in
+//            self?.imgView.image = UIImage(ciImage: image)
+//        }
+//    }
+//}
 
 extension TabDepthMapVC: AVCapturePhotoCaptureDelegate {
     func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {

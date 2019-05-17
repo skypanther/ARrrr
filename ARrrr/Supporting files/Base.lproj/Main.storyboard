@@ -88,9 +88,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Xjv-5d-f1Z">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zzc-nc-1aE">
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
-                            </imageView>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="u8D-NH-hxf">
                                 <rect key="frame" x="109.5" y="108" width="195" height="29"/>
                                 <segments>
@@ -115,13 +116,13 @@
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="u8D-NH-hxf" firstAttribute="top" secondItem="O1u-W8-tvY" secondAttribute="top" constant="20" id="D9L-zO-R1D"/>
-                            <constraint firstItem="Xjv-5d-f1Z" firstAttribute="bottom" secondItem="O1u-W8-tvY" secondAttribute="bottom" id="TMY-XJ-it4"/>
-                            <constraint firstItem="u8D-NH-hxf" firstAttribute="centerX" secondItem="Xjv-5d-f1Z" secondAttribute="centerX" id="VEe-M2-RSF"/>
-                            <constraint firstItem="Xjv-5d-f1Z" firstAttribute="top" secondItem="O1u-W8-tvY" secondAttribute="top" id="Y60-g4-fPK"/>
+                            <constraint firstItem="zzc-nc-1aE" firstAttribute="top" secondItem="O1u-W8-tvY" secondAttribute="top" id="Lkc-J4-k9F"/>
+                            <constraint firstItem="u8D-NH-hxf" firstAttribute="centerX" secondItem="O1u-W8-tvY" secondAttribute="centerX" id="XtX-1l-L9c"/>
+                            <constraint firstItem="nsK-3e-IpJ" firstAttribute="centerX" secondItem="O1u-W8-tvY" secondAttribute="centerX" id="cgt-xM-bMp"/>
+                            <constraint firstItem="zzc-nc-1aE" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" id="eQ2-66-1CW"/>
+                            <constraint firstItem="O1u-W8-tvY" firstAttribute="bottom" secondItem="zzc-nc-1aE" secondAttribute="bottom" id="iEe-F7-OFE"/>
                             <constraint firstItem="O1u-W8-tvY" firstAttribute="bottom" secondItem="nsK-3e-IpJ" secondAttribute="bottom" constant="20" id="kJV-GD-mfb"/>
-                            <constraint firstItem="Xjv-5d-f1Z" firstAttribute="trailing" secondItem="O1u-W8-tvY" secondAttribute="trailing" id="meg-nF-Y4M"/>
-                            <constraint firstItem="Xjv-5d-f1Z" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" id="wej-T8-DM4"/>
-                            <constraint firstItem="nsK-3e-IpJ" firstAttribute="centerX" secondItem="Xjv-5d-f1Z" secondAttribute="centerX" id="xUV-6m-D9h"/>
+                            <constraint firstItem="O1u-W8-tvY" firstAttribute="trailing" secondItem="zzc-nc-1aE" secondAttribute="trailing" id="sAk-pq-ZY7"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="O1u-W8-tvY"/>
                     </view>
@@ -133,7 +134,7 @@
                     <connections>
                         <outlet property="cameraButton" destination="nsK-3e-IpJ" id="ejs-uk-o6h"/>
                         <outlet property="cameraButtonOutlet" destination="nsK-3e-IpJ" id="Cmh-Wp-Nzw"/>
-                        <outlet property="imgView" destination="Xjv-5d-f1Z" id="Fm9-Yg-K2b"/>
+                        <outlet property="previewView" destination="zzc-nc-1aE" id="3CI-Ti-msP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
