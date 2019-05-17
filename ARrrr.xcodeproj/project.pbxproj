@@ -24,8 +24,6 @@
 		9A1DFC30228DEF80007CCDB5 /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A1DFC2D228DEF80007CCDB5 /* SpriteKit.framework */; };
 		9A1DFC31228DEF80007CCDB5 /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A1DFC2E228DEF80007CCDB5 /* Photos.framework */; };
 		9A1DFC32228DEF80007CCDB5 /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A1DFC2F228DEF80007CCDB5 /* AVKit.framework */; };
-		9A1DFC34228DF6FA007CCDB5 /* DepthCamVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1DFC33228DF6FA007CCDB5 /* DepthCamVC.swift */; };
-		9A1DFC36228DFE0E007CCDB5 /* DepthCamOutputVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1DFC35228DFE0E007CCDB5 /* DepthCamOutputVC.swift */; };
 		9A1DFC38228E013F007CCDB5 /* AVDepthData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1DFC37228E013F007CCDB5 /* AVDepthData.swift */; };
 		9A1DFC3A228E021F007CCDB5 /* DepthImageFilters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1DFC39228E021F007CCDB5 /* DepthImageFilters.swift */; };
 		9A238F43228D9CB700857AD0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A238F42228D9CB700857AD0 /* AppDelegate.swift */; };
@@ -57,8 +55,6 @@
 		9A1DFC2D228DEF80007CCDB5 /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
 		9A1DFC2E228DEF80007CCDB5 /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
 		9A1DFC2F228DEF80007CCDB5 /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
-		9A1DFC33228DF6FA007CCDB5 /* DepthCamVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepthCamVC.swift; sourceTree = "<group>"; };
-		9A1DFC35228DFE0E007CCDB5 /* DepthCamOutputVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepthCamOutputVC.swift; sourceTree = "<group>"; };
 		9A1DFC37228E013F007CCDB5 /* AVDepthData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVDepthData.swift; sourceTree = "<group>"; };
 		9A1DFC39228E021F007CCDB5 /* DepthImageFilters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DepthImageFilters.swift; sourceTree = "<group>"; };
 		9A238F3F228D9CB700857AD0 /* ARrrr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARrrr.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -164,8 +160,6 @@
 				9A238F44228D9CB700857AD0 /* TabMeasuringVC.swift */,
 				9A238F46228D9CB700857AD0 /* TabDepthMapVC.swift */,
 				9A1DFC05228DBBCB007CCDB5 /* PointCloudOutputVC.swift */,
-				9A1DFC33228DF6FA007CCDB5 /* DepthCamVC.swift */,
-				9A1DFC35228DFE0E007CCDB5 /* DepthCamOutputVC.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -256,10 +250,8 @@
 			files = (
 				9A238F47228D9CB700857AD0 /* TabDepthMapVC.swift in Sources */,
 				9A238F43228D9CB700857AD0 /* AppDelegate.swift in Sources */,
-				9A1DFC34228DF6FA007CCDB5 /* DepthCamVC.swift in Sources */,
 				9A238F45228D9CB700857AD0 /* TabMeasuringVC.swift in Sources */,
 				9A1DFC38228E013F007CCDB5 /* AVDepthData.swift in Sources */,
-				9A1DFC36228DFE0E007CCDB5 /* DepthCamOutputVC.swift in Sources */,
 				9A1DFC06228DBBCB007CCDB5 /* PointCloudOutputVC.swift in Sources */,
 				9A1DFC02228DA4FB007CCDB5 /* scenekit.swift in Sources */,
 				9A1DFC0C228DC567007CCDB5 /* PointCloud.swift in Sources */,

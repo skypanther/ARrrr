@@ -174,10 +174,10 @@ extension TabDepthMapVC: AVCaptureVideoDataOutputSampleBufferDelegate {
         let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer)
         let image = CIImage(cvPixelBuffer: pixelBuffer!)
         
-        var displayImage = UIImage(ciImage: image)
-        displayImage = displayImage.rotate(radians: .pi/2)
+//        var displayImage = UIImage(ciImage: image)
+//        displayImage = displayImage.rotate(radians: .pi/2)
         DispatchQueue.main.async { [weak self] in
-            self?.imgView.image = displayImage
+            self?.imgView.image = UIImage(ciImage: image)
         }
     }
 }
