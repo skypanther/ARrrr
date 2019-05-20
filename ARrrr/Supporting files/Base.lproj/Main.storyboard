@@ -209,6 +209,7 @@
                     <connections>
                         <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
                         <segue destination="mga-pD-3sP" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
+                        <segue destination="k0L-BV-7g4" kind="relationship" relationship="viewControllers" id="lZn-mg-sQN"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
@@ -238,6 +239,116 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bgw-7a-nL6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="749.27536231884062" y="359.59821428571428"/>
+        </scene>
+        <!--DepthCam-->
+        <scene sceneID="5FX-hA-i5h">
+            <objects>
+                <viewController storyboardIdentifier="TabDepthCamVC" id="xfb-Zf-PTC" customClass="TabDepthCamVC" customModule="ARrrr" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="74o-ep-iew">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FOw-B1-wVT">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="36b-RG-3v6">
+                                <rect key="frame" x="184" y="763" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="takePhoto:" destination="xfb-Zf-PTC" eventType="touchUpInside" id="aIG-wj-3O5"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="FOw-B1-wVT" firstAttribute="leading" secondItem="bcC-Mq-COD" secondAttribute="leading" id="12g-LV-vaT"/>
+                            <constraint firstItem="FOw-B1-wVT" firstAttribute="top" secondItem="bcC-Mq-COD" secondAttribute="top" id="61a-1E-p63"/>
+                            <constraint firstItem="bcC-Mq-COD" firstAttribute="bottom" secondItem="36b-RG-3v6" secondAttribute="bottom" constant="20" id="AYA-5B-3wO"/>
+                            <constraint firstItem="bcC-Mq-COD" firstAttribute="trailing" secondItem="FOw-B1-wVT" secondAttribute="trailing" id="Baa-Cv-KUY"/>
+                            <constraint firstItem="36b-RG-3v6" firstAttribute="centerX" secondItem="bcC-Mq-COD" secondAttribute="centerX" id="Kwl-CY-RSk"/>
+                            <constraint firstItem="bcC-Mq-COD" firstAttribute="bottom" secondItem="FOw-B1-wVT" secondAttribute="bottom" id="mby-GT-I30"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="bcC-Mq-COD"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="DepthCam" id="vDI-75-tx7">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="vhi-3E-yCI"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="camView" destination="FOw-B1-wVT" id="eic-d4-Pr2"/>
+                        <outlet property="cameraButton" destination="36b-RG-3v6" id="dxc-KQ-o3d"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x7Q-ZM-wiC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1647.826086956522" y="1036.6071428571429"/>
+        </scene>
+        <!--Depth Cam OutputVC-->
+        <scene sceneID="MNq-ES-PyT">
+            <objects>
+                <viewController storyboardIdentifier="DepthCamOutputVC" id="6AX-ss-HWk" customClass="DepthCamOutputVC" customModule="ARrrr" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="F6a-ba-DLd">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FwK-22-mPG">
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                            </imageView>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.10000000000000001" maxValue="0.98999999999999999" translatesAutoresizingMaskIntoConstraints="NO" id="LqA-Nm-xZx">
+                                <rect key="frame" x="18" y="812" width="378" height="31"/>
+                                <color key="tintColor" red="0.94117647059999998" green="0.39607843139999999" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="sliderChanged:" destination="6AX-ss-HWk" eventType="valueChanged" id="2PC-HS-YKU"/>
+                                </connections>
+                            </slider>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="LqA-Nm-xZx" firstAttribute="leading" secondItem="1PF-fT-lxP" secondAttribute="leading" constant="20" id="0DR-JA-nbv"/>
+                            <constraint firstItem="1PF-fT-lxP" firstAttribute="bottom" secondItem="LqA-Nm-xZx" secondAttribute="bottom" constant="20" id="6Uh-cD-1sx"/>
+                            <constraint firstItem="FwK-22-mPG" firstAttribute="leading" secondItem="1PF-fT-lxP" secondAttribute="leading" id="LXj-yC-xgz"/>
+                            <constraint firstAttribute="bottom" secondItem="FwK-22-mPG" secondAttribute="bottom" id="auT-k2-Wi5"/>
+                            <constraint firstItem="LqA-Nm-xZx" firstAttribute="centerX" secondItem="1PF-fT-lxP" secondAttribute="centerX" id="go0-xn-M6j"/>
+                            <constraint firstItem="FwK-22-mPG" firstAttribute="top" secondItem="1PF-fT-lxP" secondAttribute="top" id="iWy-OW-wWL"/>
+                            <constraint firstItem="1PF-fT-lxP" firstAttribute="trailing" secondItem="FwK-22-mPG" secondAttribute="trailing" id="k0F-6g-3oK"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="1PF-fT-lxP"/>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="FwK-22-mPG" id="i4p-9i-bPd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KWh-m5-vsG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2448" y="1035"/>
+        </scene>
+        <!--DepthCam-->
+        <scene sceneID="qFv-xL-OZC">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="k0L-BV-7g4" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="DepthCam" id="8TW-mf-Rz0"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="cif-eb-R92">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="xfb-Zf-PTC" kind="relationship" relationship="rootViewController" id="Aqh-1c-1a8"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ax5-3n-gPx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="737.68115942028987" y="1036.6071428571429"/>
         </scene>
     </scenes>
     <resources>
